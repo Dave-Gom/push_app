@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyAEintMjBKGnDUrh9337EijkOuUmxEpCx4</string>
+	<key>GCM_SENDER_ID</key>
+	<string>699384102140</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.davegomez.pushApp</string>
+	<key>PROJECT_ID</key>
+	<string>flutter-projects-f3ceb</string>
+	<key>STORAGE_BUCKET</key>
+	<string>flutter-projects-f3ceb.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:699384102140:ios:07f24203889e3f2fd6eb79</string>
+</dict>
+</plist>

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "699384102140",
+    "project_id": "flutter-projects-f3ceb",
+    "storage_bucket": "flutter-projects-f3ceb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:699384102140:android:270e210bd867b291d6eb79",
+        "android_client_info": {
+          "package_name": "com.davegomez.push_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsyLjAbIQXkhVVVXbq1QhGsCxGbMrijow"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
