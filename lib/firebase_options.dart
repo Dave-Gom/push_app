@@ -65,4 +65,5 @@ class DefaultFirebaseOptions {
     storageBucket: 'flutter-projects-f3ceb.appspot.com',
     iosBundleId: 'com.davegomez.pushApp',
   );
+
 }
