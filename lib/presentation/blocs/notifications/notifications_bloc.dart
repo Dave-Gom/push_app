@@ -93,4 +93,16 @@ class NotificationsBloc extends Bloc<NotificationsEvent, NotificationsState> {
     add(NotificationStatusChanged(settings.authorizationStatus));
     _getFCMToken();
   }
+
+  PushMessage? getMessageById(String messageId) {
+    final exsts = state.notifications.any(
+      (element) => element.messageId == messageId,
+    );
+
+    if (!exsts) return null;
+
+    return state.notifications.firstWhere(
+      (element) => element.messageId == messageId,
+    );
+  }
 }
