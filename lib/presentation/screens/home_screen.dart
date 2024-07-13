@@ -22,19 +22,30 @@ class HomeScreen extends StatelessWidget {
               icon: const Icon(Icons.settings))
         ],
       ),
-      body: _HomeView(),
+      body: const _HomeView(),
     );
   }
 }
 
 class _HomeView extends StatelessWidget {
-  const _HomeView({super.key});
+  const _HomeView();
 
   @override
   Widget build(BuildContext context) {
+    final notifications =
+        context.watch<NotificationsBloc>().state.notifications;
+
     return ListView.builder(
-      itemBuilder: (context, index) {
-        return const ListTile();
+      itemCount: notifications.length,
+      itemBuilder: (BuildContext context, int index) {
+        final notification = notifications[index];
+        return ListTile(
+          title: Text(notification.title),
+          subtitle: Text(notification.body),
+          leading: notification.imageUrl != null
+              ? Image.network(notification.imageUrl!)
+              : null,
+        );
       },
     );
   }
