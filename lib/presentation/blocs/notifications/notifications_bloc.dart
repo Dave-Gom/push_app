@@ -59,7 +59,7 @@ class NotificationsBloc extends Bloc<NotificationsEvent, NotificationsState> {
     final token = await messaging.getToken();
   }
 
-  void _handelRemoteMessage(RemoteMessage message) {
+  void handleRemoteMessage(RemoteMessage message) {
     if (message.notification == null) return;
 
     final notification = PushMessage(
@@ -77,7 +77,7 @@ class NotificationsBloc extends Bloc<NotificationsEvent, NotificationsState> {
   }
 
   void _onForegroundMessage() {
-    FirebaseMessaging.onMessage.listen(_handelRemoteMessage);
+    FirebaseMessaging.onMessage.listen(handleRemoteMessage);
   }
 
   void requestPersimssion() async {
