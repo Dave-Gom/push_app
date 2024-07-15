@@ -17,8 +17,19 @@ Future<void> firebaseMessagingBackgorundHandler(RemoteMessage message) async {
 
 class NotificationsBloc extends Bloc<NotificationsEvent, NotificationsState> {
   FirebaseMessaging messaging = FirebaseMessaging.instance;
+  int pushNumberId = 0;
 
-  NotificationsBloc() : super(const NotificationsState()) {
+  final Future<void> Function()? requestLocalNotificationPermission;
+  final void Function({
+    required int id,
+    String? title,
+    String? body,
+    String? data,
+  })? showLocalNotification;
+
+  NotificationsBloc(
+      {this.requestLocalNotificationPermission, this.showLocalNotification})
+      : super(const NotificationsState()) {
     on<NotificationStatusChanged>(_notificationStatusChanged);
     on<NotificationRecived>(_onPushMessageReceived);
     //todo3 crear el listener
@@ -64,7 +75,7 @@ class NotificationsBloc extends Bloc<NotificationsEvent, NotificationsState> {
 
     final notification = PushMessage(
         messageId:
-            message.messageId?.replaceAll(':', '').replaceAll('%', '') ?? '',
+            message.messageId?.replaceAll(":", '').replaceAll('%', '') ?? '',
         title: message.notification!.title ?? '',
         body: message.notification!.body ?? '',
         sentDate: message.sentTime ?? DateTime.now(),
@@ -72,6 +83,14 @@ class NotificationsBloc extends Bloc<NotificationsEvent, NotificationsState> {
         imageUrl: Platform.isAndroid
             ? message.notification!.android?.imageUrl ?? ''
             : message.notification!.apple?.imageUrl ?? '');
+
+    if (showLocalNotification != null) {
+      showLocalNotification!(
+          id: ++pushNumberId,
+          body: notification.body,
+          data: notification.messageId,
+          title: notification.title);
+    }
 
     add(NotificationRecived(notification));
   }
@@ -89,6 +108,10 @@ class NotificationsBloc extends Bloc<NotificationsEvent, NotificationsState> {
         criticalAlert: true,
         provisional: false,
         sound: true);
+
+    if (requestLocalNotificationPermission != null) {
+      await requestLocalNotificationPermission!();
+    }
 
     add(NotificationStatusChanged(settings.authorizationStatus));
     _getFCMToken();
